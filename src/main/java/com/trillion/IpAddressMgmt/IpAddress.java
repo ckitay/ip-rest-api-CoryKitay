@@ -18,8 +18,6 @@ public class IpAddress {
 	private Long part3;
 	private Long part4;
 	
-	private String[] wholeAddress; // Not intended for data store
-
 	protected IpAddress() {}	
 	
 	public IpAddress(Long block, Long part1, Long part2, Long part3, Long part4) {
@@ -29,39 +27,8 @@ public class IpAddress {
 		this.part3 = part3;
 		this.part4 = part4;
 		this.status = "Available";
+		this.id = part4;
 	}
-	
-	//IpAddress(String address)
-	//{
-		//CreateIpAddress(address);		
-	//}
-	
-	/*
-	protected void CreateIpAddress(String addressBlock) {
-		
-		wholeAddress = addressBlock.split("/",2);
-		String[] address = wholeAddress[0].split("\\.",4);
-		
-		String blockString = wholeAddress[1];
-		block = Long.parseLong(blockString);
-		
-		// Just doing class C / 24 block for now
-		for(int i=0; i < block; i++)
-		{
-			;
-		}		
-	}*/	
-	
-	/*
-	protected void CreateIpAddress(String[] address )	{
-		
-		part1 = Long.parseLong(address[0]);
-		part2 = Long.parseLong(address[1]);
-		part3 = Long.parseLong(address[2]);
-		part4 = Long.parseLong(address[3]);
-		
-		status = "Available";
-	}*/
 
 	@Override
 	public String toString() {
@@ -73,8 +40,21 @@ public class IpAddress {
 	public Long getId() {
 		return id;
 	}
+	
+	public String getAddress() {
+		return part1.toString() + "." + 
+				part2.toString() + "." +
+				part3.toString() + "." +
+				part4.toString() + "/" +
+				block.toString();
+	}
 
 	public String getStatus() {
 		return status;
+	}
+	
+	public void setStatus(String status)
+	{
+		this.status = status;
 	}
 }

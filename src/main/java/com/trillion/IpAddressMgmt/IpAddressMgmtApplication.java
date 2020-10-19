@@ -16,6 +16,7 @@ public class IpAddressMgmtApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(IpAddressMgmtApplication.class);
 
+	
 	@Bean
 	public CommandLineRunner demo(IpAddressRepository repository) {
 		return (args) -> {
